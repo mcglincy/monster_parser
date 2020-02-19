@@ -46,6 +46,7 @@ MAX_DETAIL = 5
 EXIT_DIRECTIONS = ['north', 'south', 'east', 'west', 'up', 'down']
 
 def read_roomdesc(f):
+  """Should be 812 bytes."""
   roomdesc = {}
   roomdesc["special_act"] = read_integer(f)
   roomdesc["owner"] = read_very_short_string(f)

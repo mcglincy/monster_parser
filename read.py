@@ -2,6 +2,23 @@
 # Numeric encoding is little-endian.
 BYTE_ORDER = 'little'
 
+# normlen = 80;           { normal string length }
+STRING_LENGTH_NORMAL = 80
+# shortlen = 20;    { ordinary short string }
+STRING_LENGTH_SHORT = 20
+# veryshortlen = 12;  { very short string length for userid's etc }
+STRING_LENGTH_VERY_SHORT = 12
+
+
+def has_more_data(f):
+  offset = f.tell()
+  b = f.read(1)
+  if b == b"":
+    return False
+  # go back to where we were
+  f.seek(offset, 0)
+  return True
+
 def read_bytebool(f):
   """Read a one-byte boolean.
 
@@ -34,26 +51,29 @@ def read_varying_char(f, max_length):
   return ''.join(chars)
 
 def read_string(f):
-  """Read a normal string.
+  """Read a normal ASCII string.
 
-  normlen = 80;           { normal string length }
+  82 bytes total (2 len + 80 chars)
+
   String = VARYING[NormLen] of CHAR;
   """
-  return read_varying_char(f, 80)
+  return read_varying_char(f, STRING_LENGTH_NORMAL)
 
 def read_short_string(f):
-  """Read a short string.
+  """Read a short ASCII string.
 
-  shortlen = 20;    { ordinary short string }
+  22 bytes total (2 len + 20 chars)
+
   ShortString = VARYING[ShortLen] of CHAR;
   """
-  return read_varying_char(f, 20)
+  return read_varying_char(f, STRING_LENGTH_SHORT)
 
 def read_very_short_string(f):
-  """Read a very short string.
+  """Read a very short ASCII string.
 
-  veryshortlen = 12;  { very short string length for userid's etc }
+  14 bytes total (2 len + 12 chars)
+
   VeryShortString = VARYING[VeryShortLen] of CHAR;
   """
-  return read_varying_char(f, 12)
+  return read_varying_char(f, STRING_LENGTH_VERY_SHORT)
 
