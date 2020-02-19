@@ -25,7 +25,8 @@ def read_bytebool(f):
   BYTE_BOOL = [BIT] BOOLEAN; 
   """
   # TODO: parse BYTE_BOOL
-  return int.from_bytes(f.read(1), byteorder=BYTE_ORDER)
+  intval = int.from_bytes(f.read(1), byteorder=BYTE_ORDER)
+  return intval == 1
 
 def read_integer(f):
   """Read an integer.
