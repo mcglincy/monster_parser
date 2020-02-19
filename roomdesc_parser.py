@@ -79,13 +79,10 @@ import json
 #   AutoLook: BYTE_BOOL;      { do a look when user comes out of exit }
 # END;
 
-filename = 'roomdesc.mon'
-
 BYTE_ORDER = 'little'
 MAX_EXIT = 6
 MAX_WINDOW = 2
 MAX_DETAIL = 5
-
 EXIT_DIRECTIONS = ['north', 'south', 'east', 'west', 'up', 'down']
 
 def read_bytebool(f):
@@ -128,17 +125,10 @@ def read_exit(f):
   exit["hidden"] = read_integer(f)
   exit["obj_req"] = read_integer(f)
   exit["alias"] = read_very_short_string(f)
-  # TODO: parse BYTE_BOOL
   exit["req_verb"] = read_bytebool(f)
   exit["req_alias"] = read_bytebool(f)
   exit["auto_look"] = read_bytebool(f)
   return exit
-
-LEADING_BYTES = 8
-RECORD_SIZE = 812
-
-offsets = [8, 820, 1632, 2436, 3248]
-
 
 def read_roomdesc(f):
   roomdesc = {}
@@ -206,13 +196,13 @@ def read_roomdesc(f):
   return roomdesc
 
 
+filename = 'roomdesc.mon'
 with open(filename, 'rb') as f:
   roomdescs = []
   # 752
   for i in range(0, 752):
     roomdesc = read_roomdesc(f)
     roomdescs.append(roomdesc)
-    # print("offset:" + str(f.tell()))
   print(json.dumps(roomdescs, indent = 2, sort_keys=False))
 
 
