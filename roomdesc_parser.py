@@ -205,6 +205,7 @@ def read_roomdesc(f):
       roomdesc["mags"].append(mag)
   return roomdesc
 
+
 with open(filename, 'rb') as f:
   roomdescs = []
   # 752
@@ -214,14 +215,5 @@ with open(filename, 'rb') as f:
     # print("offset:" + str(f.tell()))
   print(json.dumps(roomdescs, indent = 2, sort_keys=False))
 
-
-
-#    f.read(812 - 4 - 2 - len(nice_name))
-
-#  string_length = int.from_bytes(f.read(2), byteorder=BYTE_ORDER)
-#  for i in range(0, length):
-#   num = int.from_bytes(f.read(1), byteorder=BYTE_ORDER)
-#    c = str(chr(num))
-#    print(c)
 
 
