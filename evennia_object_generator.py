@@ -115,6 +115,7 @@ for weapon in weapons:
   random_damage = lookup_effect(weapon, Effect.WEAPON_RANDOM_DAMAGE) or 0
   attack_speed = lookup_effect(weapon, Effect.ATTACK_SPEED) or 0
   print(f"  '{weapon['obj_name']}': {{")
+  print(f"    'key': '{weapon['obj_name']}'")
   print("    'prototype_parent': 'weapon',")
   print(f"    'base_damage': {base_damage},")
   print(f"    'random_damage': {random_damage},")
@@ -143,6 +144,7 @@ for armor in armor:
   spell_armor = lookup_effect(armor, Effect.SPELL_ARMOR) or 0
 
   print(f"  '{armor['obj_name']}': {{")
+  print(f"    'key': '{armor['obj_name']}'")
   print("    'prototype_parent': 'armor',")
   print(f"    'base_armor': {base_armor},")  
   print(f"    'deflect_armor': {deflect_armor},")  
@@ -158,22 +160,3 @@ for armor in armor:
   # TODO: handle line_desc? looks mostly dead
   print('  },')
 print('}')
-
-
-#  print(f'class {classname}(Armor):')
-#  print('  pass')
-
-#      pass
-      # print(obj['obj_name'])
-      # print(lookup_effect(obj, Effect.BASE_ARMOR))
-
-      # it's a weapon
-      #print(obj['obj_name'])
-      #print(lookup_effect(obj, Effect.WEAPON_BASE_DAMAGE))
-
-    # for parm in obj['parms']:
-      # print(parse_parm(parm))
-
-print("""#
-#
-#""")
