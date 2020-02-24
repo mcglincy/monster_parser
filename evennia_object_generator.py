@@ -150,9 +150,9 @@ for armor in armor:
   print(f"    'deflect_armor': {deflect_armor},")  
   print(f"    'spell_armor': {spell_armor},")  
   print(f"    'weight': {armor['weight']},")  
-  print(f"    'equip_slot': {weapon['wear']},")  
+  print(f"    'equip_slot': {armor['wear']},")  
   #print(f"    'base_damage': {base_damage},")
-  desc_idx = weapon['examine'] - 1
+  desc_idx = armor['examine'] - 1
   if desc_idx >= 0 and desc_idx < len(descs):
     # TODO: special handling for 'default' descript 32000
     desc = ' '.join(descs[desc_idx]['lines'])
