@@ -105,7 +105,7 @@ WEAPON_PROTOTYPES = {
   'weapon': {
     'typeclass': 'objects.Weapon',
     'key': 'weapon',
-    'description': 'A weapon.',
+    'desc': 'A weapon.',
   },""")
 for weapon in weapons:
 #  classname = camelcase_class_name(weapon['obj_name'])
@@ -126,7 +126,7 @@ for weapon in weapons:
   if desc_idx >= 0 and desc_idx < len(descs):
     # TODO: special handling for 'default' descript 32000
     desc = ' '.join(descs[desc_idx]['lines'])
-    print(f"    'description': '{desc}',")
+    print(f"    'desc': '{desc}',")
   # TODO: handle line_desc? looks mostly dead
   print('  },')
 print('}')
@@ -136,13 +136,12 @@ ARMOR_PROTOTYPES = {
   'armor': {
     'typeclass': 'objects.Armor',
     'key': 'armor',
-    'description': 'An armor.',
+    'desc': 'An armor.',
   },""")
 for armor in armor:
   base_armor = lookup_effect(armor, Effect.BASE_ARMOR) or 0
   deflect_armor = lookup_effect(armor, Effect.DEFLECT_ARMOR) or 0
   spell_armor = lookup_effect(armor, Effect.SPELL_ARMOR) or 0
-
   print(f"  '{armor['obj_name']}': {{")
   print(f"    'key': '{armor['obj_name']}'")
   print("    'prototype_parent': 'armor',")
@@ -151,12 +150,11 @@ for armor in armor:
   print(f"    'spell_armor': {spell_armor},")  
   print(f"    'weight': {armor['weight']},")  
   print(f"    'equip_slot': {armor['wear']},")  
-  #print(f"    'base_damage': {base_damage},")
   desc_idx = armor['examine'] - 1
   if desc_idx >= 0 and desc_idx < len(descs):
     # TODO: special handling for 'default' descript 32000
     desc = ' '.join(descs[desc_idx]['lines'])
-    print(f"    'description': '{desc}',")
+    print(f"    'desc': '{desc}',")
   # TODO: handle line_desc? looks mostly dead
   print('  },')
 print('}')
