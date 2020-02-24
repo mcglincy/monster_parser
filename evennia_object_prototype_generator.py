@@ -83,7 +83,7 @@ def snake_case(s):
   s = s.strip()
   chars = []
   for c in s:
-    if c == ' ':
+    if c == ' ' or c == '-':
       chars.append('_')
     elif c == "'":
       pass
