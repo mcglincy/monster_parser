@@ -114,9 +114,12 @@ weapons = []
 armor = []
 for obj in objects:
   if obj['kind'] == ObjectKind.EQUIP:
-    if lookup_effect(obj, Effect.WEAPON_BASE_DAMAGE):
+    if (lookup_effect(obj, Effect.WEAPON_BASE_DAMAGE)
+      or lookup_effect(obj, Effect.WEAPON_RANDOM_DAMAGE)):
       weapons.append(obj)
-    elif lookup_effect(obj, Effect.BASE_ARMOR):
+    elif (lookup_effect(obj, Effect.BASE_ARMOR)
+      or lookup_effect(obj, Effect.DEFLECT_ARMOR)
+      or lookup_effect(obj, Effect.SPELL_ARMOR)):
       armor.append(obj)
 weapons.sort(key=lambda x: x['obj_name'].upper())
 armor.sort(key=lambda x: x['obj_name'].upper())
@@ -129,7 +132,13 @@ print("""
 WEAPON = {
   'typeclass': 'typeclasses.objects.Weapon',
   'key': 'weapon',
+  'attack_speed': 0,
+  'base_damage': 0,
   'desc': 'A weapon.',
+  'equip_slot': 1
+  'random_damage': 0,
+  'weight': 0,
+  'worth': 0
 }
 """)
 
@@ -142,19 +151,21 @@ for weapon in weapons:
   random_damage = lookup_effect(weapon, Effect.WEAPON_RANDOM_DAMAGE) or 0
   attack_speed = lookup_effect(weapon, Effect.ATTACK_SPEED) or 0
   print(f"{snake_case(obj_name)} = {{")
+  # TODO: add better quote escaping for key and desc
   print(f"  'key': \"{weapon['obj_name']}\",")
   print("  'prototype_parent': 'WEAPON',")
-  print(f"  'base_damage': {base_damage},")
-  print(f"  'random_damage': {random_damage},")
   print(f"  'attack_speed': {attack_speed},")
-  print(f"  'weight': {weapon['weight']},")
-  print(f"  'equip_slot': {weapon['wear']},")
+  print(f"  'base_damage': {base_damage},")
   desc_idx = weapon['examine'] - 1
   if desc_idx >= 0 and desc_idx < len(descs):
     # TODO: special handling for 'default' descript 32000
     desc = escaped(' '.join(descs[desc_idx]['lines']))
     print(f"  'desc': \"{desc}\",")
+  print(f"  'equip_slot': {weapon['wear']},")
   # TODO: handle line_desc? looks mostly dead
+  print(f"  'random_damage': {random_damage},")
+  print(f"  'weight': {weapon['weight']},")
+  print(f"  'worth': {weapon['worth']},")
   print('}')
   print()
 
@@ -167,7 +178,13 @@ print("""
 ARMOR = {
   'typeclass': 'typeclasses.objects.Armor',
   'key': 'armor',
+  'base_armor': 0,
+  'deflect_armor': 0,
   'desc': 'An armor.',
+  'equip_slot': 4,
+  'spell_armor': 0,
+  'weight': 0,
+  'worth': 0  
 }
 """)
 
@@ -177,19 +194,20 @@ for armor in armor:
   deflect_armor = lookup_effect(armor, Effect.DEFLECT_ARMOR) or 0
   spell_armor = lookup_effect(armor, Effect.SPELL_ARMOR) or 0
   print(f"{snake_case(obj_name)} = {{")  
+  # TODO: add better quote escaping for key and desc
   print(f"  'key': \"{armor['obj_name']}\",")
   print("  'prototype_parent': 'ARMOR',")
   print(f"  'base_armor': {base_armor},")  
   print(f"  'deflect_armor': {deflect_armor},")  
-  print(f"  'spell_armor': {spell_armor},")  
-  print(f"  'weight': {armor['weight']},")  
-  print(f"  'equip_slot': {armor['wear']},")  
   desc_idx = armor['examine'] - 1
   if desc_idx >= 0 and desc_idx < len(descs):
     # TODO: special handling for 'default' descript 32000
     desc = escaped(' '.join(descs[desc_idx]['lines']))
     print(f"  'desc': \"{desc}\",")
-
+  print(f"  'equip_slot': {armor['wear']},")  
   # TODO: handle line_desc? looks mostly dead
+  print(f"  'spell_armor': {spell_armor},")  
+  print(f"  'weight': {armor['weight']},")  
+  print(f"  'worth': {weapon['worth']},")  
   print('}')
   print()
