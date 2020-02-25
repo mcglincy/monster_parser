@@ -28,6 +28,8 @@ class Effect(IntEnum):
   SPELL_ARMOR = 31
   SMALLEST_FIT = 32
   LARGEST_FIT = 33
+  # spell deflect aka spell destroy
+  SPELL_DEFLECT_ARMOR = 39
   THROW_BASE = 40
   THROW_RANDOM = 41
   THROW_RANGE = 42
@@ -183,6 +185,7 @@ ARMOR = {
   'desc': 'An armor.',
   'equip_slot': 4,
   'spell_armor': 0,
+  'spell_deflect_armor': 0,
   'weight': 0,
   'worth': 0  
 }
@@ -193,6 +196,7 @@ for armor in armor:
   base_armor = lookup_effect(armor, Effect.BASE_ARMOR) or 0
   deflect_armor = lookup_effect(armor, Effect.DEFLECT_ARMOR) or 0
   spell_armor = lookup_effect(armor, Effect.SPELL_ARMOR) or 0
+  spell_deflect_armor = lookup_effect(armor, Effect.SPELL_DEFLECT_ARMOR) or 0
   print(f"{snake_case(obj_name)} = {{")  
   # TODO: add better quote escaping for key and desc
   print(f"  'key': \"{armor['obj_name']}\",")
@@ -207,6 +211,7 @@ for armor in armor:
   print(f"  'equip_slot': {armor['wear']},")  
   # TODO: handle line_desc? looks mostly dead
   print(f"  'spell_armor': {spell_armor},")  
+  print(f"  'spell_deflect_armor': {spell_deflect_armor},")  
   print(f"  'weight': {armor['weight']},")  
   print(f"  'worth': {weapon['worth']},")  
   print('}')
