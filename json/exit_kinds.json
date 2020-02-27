@@ -1,0 +1,11 @@
+{
+  "no_exit": 0,
+  "open": 1,
+  "object_required": 2,
+  "object_forbidden": 3,
+  "random_fail": 4,
+  "potential_exit": 5,
+  "only_exists_while_holding_object": 6,
+  "timed": 7,
+  "passworded": 8
+}

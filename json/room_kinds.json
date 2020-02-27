@@ -1,0 +1,14 @@
+{
+  "market": 0,
+  "no_combat": 1,
+  "no_hiding": 2,
+  "hard_to_hide": 3,
+  "object_destroying": 4,
+  "treasure_dropping": 5,
+  "monster_generator": 6,
+  "monster_generator_group": 7,
+  "monster_lair": 8,
+  "monster_generator_min_level": 9,
+  "monster_generator_max_level": 10,
+  "healing": 11,
+}

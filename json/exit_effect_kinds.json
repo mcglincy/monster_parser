@@ -1,0 +1,14 @@
+{
+  "xp": 1,
+  "wealth": 2,
+  "bank_wealth": 3,
+  "health": 4,
+  "mana": 5,
+  "xp_set": 6,
+  "class_reset": 7,
+  "class_set": 8,
+  "alarmed": 9,
+  "health_less": 10,
+  "guardian": 11,
+  "xp_modified": 12
+}

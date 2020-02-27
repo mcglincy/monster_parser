@@ -1,0 +1,10 @@
+{
+  "bland": 0,
+  "equip": 1,
+  "scroll": 2,
+  "wand": 3,
+  "missile": 4,
+  "missile_launcher": 8,
+  "spellbook": 104,
+  "banking_machine": 108
+}

@@ -1,0 +1,15 @@
+ {
+  "attack_speed": 13,
+  "weapon_base_damage": 27,
+  "weapoon_random_damage": 28,
+  "base_armor": 29,
+  "deflect_armor": 30,
+  "spell_armor": 31,
+  "smallest_fit": 32,
+  "largest_fit": 33,
+  "spell_deflect_armor": 39,
+  "throw_base": 40,
+  "throw_random": 41,
+  "throw_range": 42,
+  "throw_behavior": 43
+ }
