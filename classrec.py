@@ -21,7 +21,7 @@ from read import *
 #   Armor,          (* The base armor for this class *)
 #   ExpAdd,         (* How much exp. this class gives to other's *)
 #   WeaponUse,      (* How good is the class with a weapon *)
-#               LevelWeaponUse,
+#   LevelWeaponUse,
 #   Size,           (* How big is this class *)
 #   HearNoise,      (* How good at over hearing things *)
 #   PoisonChance, (* How often does this class poison other's *)
@@ -59,6 +59,7 @@ def read_classrec(f):
   cr['armor'] = read_integer(f)
   cr['exp_add'] = read_integer(f)
   cr['weapon_use'] = read_integer(f)
+  cr['level_weapon_use'] = read_integer(f)
   cr['size'] = read_integer(f)
   cr['hear_noise'] = read_integer(f)
   cr['poison_chance'] = read_integer(f)
@@ -71,6 +72,4 @@ def read_classrec(f):
   cr['shadow_damage_percent'] = read_integer(f)
   cr['p1'] = read_integer(f)
   cr['p2'] = read_integer(f)
-  # TODO: what are the extra 4 bytes?
-  f.read(4)
   return cr
