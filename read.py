@@ -32,7 +32,7 @@ def read_integer(f):
   """Read an integer.
 
   An INTEGER is a 4-byte little-endian signed int."""
-  return int.from_bytes(f.read(4), byteorder=BYTE_ORDER)
+  return int.from_bytes(f.read(4), byteorder=BYTE_ORDER, signed=True)
 
 def read_varying_char(f, max_length):
   """Read a VARYING CHAR array as a string.
