@@ -26,7 +26,7 @@
   "invisible": 25,
   "see_invisible": 26,
   "weapon_base_damage": 27,
-  "weapoon_random_damage": 28,
+  "weapon_random_damage": 28,
   "base_armor": 29,
   "deflect_armor": 30,
   "spell_armor": 31,
