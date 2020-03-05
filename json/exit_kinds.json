@@ -5,7 +5,7 @@
   "object_forbidden": 3,
   "random_fail": 4,
   "potential_exit": 5,
-  "only_exists_with_object_required": 6,
+  "only_exists_with_object": 6,
   "timed_open_close": 7,
   "passworded": 8
 }
