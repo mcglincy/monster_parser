@@ -43,7 +43,9 @@ MAX_EXIT = 6
 MAX_WINDOW = 2
 # maxdetail = 5;    { max num of detail keys/descriptions per room }
 MAX_DETAIL = 5
-EXIT_DIRECTIONS = ['north', 'south', 'east', 'west', 'up', 'down']
+
+#SLOT_DIRECTIONS = ['unknown', 'north', 'south', 'east', 'west', 'up', 'down']
+SLOT_DIRECTIONS = ['unknown', 'south', 'north', 'west', 'east', 'down', 'up']
 
 def read_roomdesc(f):
   """Should be 812 bytes."""
@@ -61,7 +63,7 @@ def read_roomdesc(f):
   roomdesc["exits"] = []
   for j in range(0, MAX_EXIT):
     exit = read_exit(f)
-    exit["direction"] = EXIT_DIRECTIONS[j]
+    exit["direction"] = SLOT_DIRECTIONS[exit["slot"]]
     if exit["to_loc"] > 0:
       roomdesc["exits"].append(exit)
   roomdesc["obj_drop"] = read_integer(f)
