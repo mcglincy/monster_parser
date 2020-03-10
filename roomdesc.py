@@ -44,8 +44,13 @@ MAX_WINDOW = 2
 # maxdetail = 5;    { max num of detail keys/descriptions per room }
 MAX_DETAIL = 5
 
+# Direct : ARRAY[1..MaxExit] OF String :=
+#         ('north','south','east','west','up','down');
 #SLOT_DIRECTIONS = ['unknown', 'north', 'south', 'east', 'west', 'up', 'down']
+
+EXIT_DIRECTIONS = ['north', 'south', 'east', 'west', 'up', 'down']
 SLOT_DIRECTIONS = ['unknown', 'south', 'north', 'west', 'east', 'down', 'up']
+
 
 def read_roomdesc(f):
   """Should be 812 bytes."""
@@ -61,11 +66,12 @@ def read_roomdesc(f):
   roomdesc["magic_obj"] = read_integer(f)
   roomdesc["parm"] = read_integer(f)
   roomdesc["exits"] = []
-  for j in range(0, MAX_EXIT):
+  for i in range(0, MAX_EXIT):
     exit = read_exit(f)
-    exit["direction"] = SLOT_DIRECTIONS[exit["slot"]]
+    exit["direction"] = EXIT_DIRECTIONS[i]
     if exit["to_loc"] > 0:
-      roomdesc["exits"].append(exit)
+       roomdesc["exits"].append(exit)
+    #roomdesc["exits"].append(exit)
   roomdesc["obj_drop"] = read_integer(f)
   roomdesc["obj_desc"] = read_integer(f)
   roomdesc["obj_dest"] = read_integer(f)
@@ -89,7 +95,10 @@ def read_roomdesc(f):
     detail_desc = read_integer(f)
     if detail_desc > 0:
       roomdesc["detail_descs"].append(detail_desc)
-  roomdesc["trap_to"] = read_integer(f)
+  trap_to = read_integer(f)
+  roomdesc["trap_to"] = trap_to
+  if trap_to:
+    roomdesc["trap_direction"] = EXIT_DIRECTIONS[trap_to - 1]
   roomdesc["trap_chance"] = read_integer(f)
   roomdesc["rnd_msg"] = read_integer(f)
   roomdesc["x_msg_2"] = read_integer(f)
