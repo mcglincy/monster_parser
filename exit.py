@@ -28,7 +28,7 @@ def read_exit(f):
   exit["door_effect"] = read_integer(f)
   exit["fail"] = read_integer(f)
   exit["success"] = read_integer(f)
-  exit["goin"] = read_integer(f)
+  exit["go_in"] = read_integer(f)
   exit["come_out"] = read_integer(f)
   exit["hidden"] = read_integer(f)
   exit["obj_req"] = read_integer(f)
