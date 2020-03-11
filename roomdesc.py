@@ -69,9 +69,9 @@ def read_roomdesc(f):
   for i in range(0, MAX_EXIT):
     exit = read_exit(f)
     exit["direction"] = EXIT_DIRECTIONS[i]
-    if exit["to_loc"] > 0:
-       roomdesc["exits"].append(exit)
-    #roomdesc["exits"].append(exit)
+    #if exit["to_loc"] > 0:
+    #  roomdesc["exits"].append(exit)
+    roomdesc["exits"].append(exit)
   roomdesc["obj_drop"] = read_integer(f)
   roomdesc["obj_desc"] = read_integer(f)
   roomdesc["obj_dest"] = read_integer(f)
