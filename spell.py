@@ -36,7 +36,7 @@ def read_spell(f):
   spell['level_mana'] = read_integer(f)
   spell['caster_desc'] = read_integer(f)
   spell['victim_desc'] = read_integer(f)
-  spell['allignment'] = read_integer(f)
+  spell['alignment'] = read_integer(f)
   spell['failure_desc'] = read_integer(f)
   spell['min_level'] = read_integer(f)
   spell['class'] = read_integer(f)
