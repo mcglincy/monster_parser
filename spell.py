@@ -43,7 +43,8 @@ def read_spell(f):
   spell['group'] = read_integer(f)
   spell['room'] = read_integer(f)
   spell['effects'] = []
-  for i in range(0, MAX_SPELL_EFFECT):
+  # pascal array is 0-specified [0..MaxSpellEffect], which is one more
+  for i in range(0, MAX_SPELL_EFFECT + 1):
     effect = read_effect(f)
     if effect['effect'] != 'UNKNOWN':
       spell['effects'].append(effect)
@@ -59,6 +60,4 @@ def read_spell(f):
   spell['extra1'] = read_integer(f)
   spell['extra2'] = read_integer(f)
   spell['extra3'] = read_integer(f)
-  # TODO: 45 extra bytes seems particularly fishy...
-  f.read(45)
   return spell
