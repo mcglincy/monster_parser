@@ -46,7 +46,7 @@ def read_spell(f):
   # pascal array is 0-specified [0..MaxSpellEffect], which is one more
   for i in range(0, MAX_SPELL_EFFECT + 1):
     effect = read_effect(f)
-    if effect['effect'] != 'UNKNOWN':
+    if effect['effect']:
       spell['effects'].append(effect)
   spell['chance_of_failure'] = read_integer(f)
   spell['casting_time'] = read_integer(f)

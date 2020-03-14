@@ -46,35 +46,15 @@ from read import *
 # Writeln('16) Weak');
 # Writeln('17) Slow');
 
-SPELL_EFFECTS = [
-  'UNKNOWN',
-  'Cure poison',
-  'Strength',
-  'Speed',
-  'Invisibility',
-  'See invisible',
-  'Heal',
-  'Hurt',
-  'Sleep',
-  'Push',
-  'Announce',
-  'Command',
-  'Distance hurt',
-  'Detect magic',
-  'Find person',
-  'Locate',
-  'Weak',
-  'Slow',
-]
-
 def read_effect(f):
   effect = {}
-  effect_int = read_integer(f)
-  if effect_int > 0 and effect_int < len(SPELL_EFFECTS) - 1:
-    effect['effect'] = SPELL_EFFECTS[effect_int]
-  else:
-    # empty record or bad data
-    effect['effect'] = 'UNKNOWN'
+  # effect_int = read_integer(f)
+  # if effect_int > 0 and effect_int < len(SPELL_EFFECTS) - 1:
+  #   effect['effect'] = SPELL_EFFECTS[effect_int]
+  # else:
+  #   # empty record or bad data
+  #   effect['effect'] = 'UNKNOWN'
+  effect['effect'] = read_integer(f)
   effect['name'] = read_short_string(f)
   effect['all'] = read_bytebool(f)
   effect['caster'] = read_bytebool(f)
