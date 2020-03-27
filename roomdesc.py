@@ -115,9 +115,9 @@ def read_roomdesc(f):
   roomdesc["alignment"] = read_integer(f)
   roomdesc["random_show"] = read_integer(f)
   roomdesc["extra2"] = read_integer(f)
-  roomdesc["mags"] = []
+  roomdesc["magnitudes"] = []
   for p in range(0, 32):
-    # mags are like a bitmask;
-    # we need all values to find the meaningful position
-    roomdesc["mags"].append(read_integer(f))
+    # the magnitude array is like a bitmask;
+    # we need all values to find a given mag at an index position
+    roomdesc["magnitudes"].append(read_integer(f))
   return roomdesc
