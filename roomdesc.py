@@ -117,7 +117,7 @@ def read_roomdesc(f):
   roomdesc["extra2"] = read_integer(f)
   roomdesc["mags"] = []
   for p in range(0, 32):
-    mag = read_integer(f)
-    if mag > 0:
-      roomdesc["mags"].append(mag)
+    # mags are like a bitmask;
+    # we need all values to find the meaningful position
+    roomdesc["mags"].append(read_integer(f))
   return roomdesc
