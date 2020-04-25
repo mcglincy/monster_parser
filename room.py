@@ -31,7 +31,7 @@ def read_room(f):
   for i in range(0, MAX_OBJS):
     obj_hide.append(read_integer(f))
   room["gold_here"] = read_integer(f)
-  room["obj_hide"] = obj_hide
+  room["obj_hides"] = obj_hide
   exit_blocked = []
   for i in range(0, MAX_EXIT):
     exit_blocked.append(read_integer(f))
